@@ -44,6 +44,8 @@
       <true/>
     </dict>
     <key>UIAppFonts</key>
-    <array/>
+    <array>
+      <string>MaterialIcons.ttf</string>
+    </array>
   </dict>
 </plist>
