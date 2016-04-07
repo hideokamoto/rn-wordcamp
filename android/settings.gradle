@@ -1,0 +1,3 @@
+rootProject.name = 'WckApp'
+
+include ':app'
