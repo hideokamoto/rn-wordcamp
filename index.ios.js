@@ -3,7 +3,8 @@ import React, {
   Component,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 import {
 	Toolbar as MaterialToolbar,
@@ -16,11 +17,11 @@ class WckApp extends React.Component {
 		super(props);
 		this.state = {
 			icon: 'toys'
-	  };
-    }
+		};
+	}
 	render() {
 		return (
-			<View style={styles.container}>
+			<ScrollView>
 				<MaterialToolbar
 					title='WordCamp Central'
 					icon={this.state.icon}
@@ -36,7 +37,7 @@ class WckApp extends React.Component {
 						margin: 10
 					}}/>
 				<CampList/>
-			</View>
+			</ScrollView>
 		)
 	}
 }
