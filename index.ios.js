@@ -1,8 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-
 import React, {
   AppRegistry,
   Component,
@@ -10,11 +5,44 @@ import React, {
   Text,
   View
 } from 'react-native';
+import {
+	Toolbar as MaterialToolbar,
+} from 'react-native-material-design';
 
-class WckApp extends Component {
+class WckApp extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			icon: 'toys'
+	  };
+    }
+	render() {
+		return (
+			<View style={styles.container}>
+				<MaterialToolbar
+					title='WordCamp Central'
+					icon={this.state.icon}
+					onIconPress={ () => {
+						if ( 'toys' == this.state.icon ) {
+							var icon = { icon: 'refresh' }
+						} else {
+							var icon = { icon: 'toys' }
+						}
+						this.setState(icon);
+					}}
+					rightIconStyle={{
+						margin: 10
+					}}/>
+				<Sample/>
+			</View>
+		)
+	}
+}
+
+class Sample extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
