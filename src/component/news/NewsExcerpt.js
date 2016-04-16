@@ -6,6 +6,7 @@ import React, {
 import {
 	Card
 } from 'react-native-material-design';
+var NewsContent = require('./NewsContent.js');
 
 
 class NewsExcerpt extends React.Component {
@@ -23,11 +24,19 @@ class NewsExcerpt extends React.Component {
 		return category;
 	}
 
+	_onPressed( item ) {
+		this.props.navigator.push({
+			title: item.title,
+			component: NewsContent,
+			passProps: { item: item }
+		})
+	}
+
 	render() {
 		var item = this.props.item;
 		var category = this._get_category( item );
 		return (
-			<Card>
+			<Card onPress={ () => this._onPressed( item ) }>
 				<Card.Body>
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
