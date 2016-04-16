@@ -13,6 +13,7 @@ import {
 
 var Icon = require('react-native-vector-icons/MaterialIcons');
 var NewsArchive = require('./src/component/news/NewsArchive.js');
+var SessionArchive = require('./src/component/session/SessionArchive.js');
 var api_endpoint = 'https://2015.kansai.wordcamp.org/';
 
 class Test extends React.Component {
@@ -37,6 +38,8 @@ class Row extends React.Component {
 	_get_component() {
 		if ( 'news' == this.props.type ) {
 			return NewsArchive;
+		} else if ( 'session' == this.props.type ) {
+			return SessionArchive;
 		} else {
 			return Test;
 		}
@@ -50,6 +53,8 @@ class Row extends React.Component {
 		var endpoint = this._get_api_base();
 		if ( 'news' == this.props.type ) {
 			return endpoint + 'posts';
+		} else if ( 'session' == this.props.type ) {
+			return endpoint + 'posts?type=wcb_session&filter[post_per_pages]=100';
 		}
 	}
 
