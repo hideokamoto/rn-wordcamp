@@ -5,16 +5,17 @@ import React, {
   Text,
   View,
 	TabBarIOS,
-  ScrollView
+	ScrollView,
+	NavigatorIOS
 } from 'react-native';
 var Icon = require('react-native-vector-icons/MaterialIcons');
 import {
 	Toolbar as MaterialToolbar,
 } from 'react-native-material-design';
 
-var CampList = require('./src/component/CampList.js');
+var NewsArchive = require('./src/component/NewsArchive.js');
 
-class NewsList extends React.Component {
+class Test extends React.Component {
 	constructor( props ) {
 		super( props );
 	}
@@ -22,8 +23,41 @@ class NewsList extends React.Component {
 	render() {
 		return (
 			<View>
-				<Text>News</Text>
+				<Text>aa</Text>
 			</View>
+		)
+	}
+}
+
+class Row extends React.Component {
+	constructor( props ) {
+		super( props );
+	}
+
+	_get_component() {
+		if ( 'news' == this.props.type ) {
+			return NewsArchive;
+		} else {
+			return Test;
+		}
+	}
+
+	_get_title() {
+		var title = 'WordCamp Kansai 2015';
+		return title;
+	}
+
+	render () {
+		return (
+			<NavigatorIOS
+				style={styles.navigator}
+				initialRoute={{
+					component: this._get_component(),
+					title: this._get_title(),
+					passProps: {
+						apiPath: this.props.apiPath
+					}
+			}}/>
 		)
 	}
 }
@@ -34,19 +68,6 @@ class WckApp extends React.Component {
 		this.state = {
 			selectedTab: "news"
 		};
-	}
-
-	_renderContent() {
-		if ( 'news' === this.state.selectedTab ) {
-			return (
-				<NewsList />
-			)
-		}
-		return (
-			<View>
-				<Text>aa</Text>
-			</View>
-		)
 	}
 
 	render() {
@@ -64,7 +85,7 @@ class WckApp extends React.Component {
 						})
 					}}
 				>
-					{this._renderContent()}
+					<Row type='news'/>
 				</Icon.TabBarItem>
 				<Icon.TabBarItem
 					title="session"
@@ -76,7 +97,7 @@ class WckApp extends React.Component {
 						})
 					}}
 				>
-					{this._renderContent()}
+					<Row type='session'/>
 				</Icon.TabBarItem>
 				<Icon.TabBarItem
 					title="speaker"
@@ -88,7 +109,7 @@ class WckApp extends React.Component {
 						})
 					}}
 				>
-					{this._renderContent()}
+					<Row type='speaker'/>
 				</Icon.TabBarItem>
 				<Icon.TabBarItem
 					title="sponsor"
@@ -100,44 +121,17 @@ class WckApp extends React.Component {
 						})
 					}}
 				>
-					{this._renderContent()}
+					<Row type='sponsor'/>
 				</Icon.TabBarItem>
 			</TabBarIOS>
 		)
 	}
 }
 
-class WckAppInner extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			icon: 'toys'
-		};
-	}
-	render() {
-		return (
-			<ScrollView>
-				<MaterialToolbar
-					title='WordCamp Central'
-					icon={this.state.icon}
-					onIconPress={ () => {
-						if ( 'toys' == this.state.icon ) {
-							var icon = { icon: 'refresh' }
-						} else {
-							var icon = { icon: 'toys' }
-						}
-						this.setState(icon);
-					}}
-					rightIconStyle={{
-						margin: 10
-					}}/>
-				<CampList/>
-			</ScrollView>
-		)
-	}
-}
-
 const styles = StyleSheet.create({
+	navigator: {
+		flex: 1
+	},
 	container: {
 		flex: 1,
 		justifyContent: 'center',
