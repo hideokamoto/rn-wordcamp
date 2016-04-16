@@ -81,12 +81,12 @@ class NewsArchive extends React.Component {
 
 	renderNewsArchiveView() {
 		return (
-			<View style={{ marginTop: 60}}>
+			<ScrollView style={{ marginTop: 60}}>
 				<ListView
 					dataSource={this.state.NewsArchive}
 					renderRow={this.renderNewsArchiveItem}
 					/>
-			</View>
+			</ScrollView>
 		);
 	}
 

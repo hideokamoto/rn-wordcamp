@@ -1,11 +1,10 @@
 import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View,
+	AppRegistry,
+	Component,
+	StyleSheet,
+	Text,
+	View,
 	TabBarIOS,
-	ScrollView,
 	NavigatorIOS
 } from 'react-native';
 var Icon = require('react-native-vector-icons/MaterialIcons');
