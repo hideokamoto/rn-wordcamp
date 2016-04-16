@@ -32,7 +32,9 @@ class SessionArchive extends React.Component {
 
 	renderSessionArchiveItem( item, sectionID, rowID ) {
 		return (
-			<NewsExcerpt item={item} />
+			<View>
+				<Text>Loading...</Text>
+			</View>
 		);
 	}
 
@@ -51,6 +53,7 @@ class SessionArchive extends React.Component {
 		fetch( this.props.apiPath )
 			.then( ( response ) => response.json())
 			.then( ( responseData ) => {
+				console.log(responseData);
 				this.setState({
 					SessionArchive: this.state.SessionArchive.cloneWithRows( responseData ),
 					isLoaded: true,
