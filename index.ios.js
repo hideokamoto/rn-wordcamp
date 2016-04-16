@@ -14,7 +14,7 @@ import {
 var Icon = require('react-native-vector-icons/MaterialIcons');
 var NewsArchive = require('./src/component/news/NewsArchive.js');
 var SessionArchive = require('./src/component/session/SessionArchive.js');
-var api_endpoint = 'https://2015.kansai.wordcamp.org/';
+var api_endpoint = 'https://2015.us.wordcamp.org/';
 
 class Test extends React.Component {
 	constructor( props ) {
@@ -59,7 +59,7 @@ class Row extends React.Component {
 	}
 
 	_get_title() {
-		var title = 'WordCamp Kansai 2015';
+		var title = 'WordCamp US 2015';
 		return title;
 	}
 
