@@ -6,10 +6,8 @@ import React, {
 import {
 	Card
 } from 'react-native-material-design';
-var NewsContent = require('./NewsContent.js');
 
-
-class NewsExcerpt extends React.Component {
+class SessionExcerpt extends React.Component {
 	constructor( props ) {
 		super( props );
 	}
@@ -36,7 +34,7 @@ class NewsExcerpt extends React.Component {
 		var item = this.props.item;
 		var category = this._get_category( item );
 		return (
-			<Card onPress={ () => this._onPressed( item ) }>
+			<Card>
 				<Card.Body>
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
@@ -65,4 +63,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-module.exports = NewsExcerpt;
+module.exports = SessionExcerpt;

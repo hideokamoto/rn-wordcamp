@@ -10,6 +10,7 @@ import {
 	Toolbar as MaterialToolbar,
 	Card
 } from 'react-native-material-design';
+var SessionExcerpt = require('./SessionExcerpt.js');
 
 class SessionArchive extends React.Component {
 	constructor(props) {
@@ -32,9 +33,7 @@ class SessionArchive extends React.Component {
 
 	renderSessionArchiveItem( item, sectionID, rowID ) {
 		return (
-			<View>
-				<Text>Loading...</Text>
-			</View>
+			<SessionExcerpt item={item} />
 		);
 	}
 

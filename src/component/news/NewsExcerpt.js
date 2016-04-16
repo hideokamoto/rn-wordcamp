@@ -36,7 +36,7 @@ class NewsExcerpt extends React.Component {
 		var item = this.props.item;
 		var category = this._get_category( item );
 		return (
-			<Card onPress={ () => this._onPressed( item ) }>
+			<Card>
 				<Card.Body>
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
