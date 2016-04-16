@@ -7,12 +7,13 @@ import React, {
 	TabBarIOS,
 	NavigatorIOS
 } from 'react-native';
-var Icon = require('react-native-vector-icons/MaterialIcons');
 import {
 	Toolbar as MaterialToolbar,
 } from 'react-native-material-design';
 
+var Icon = require('react-native-vector-icons/MaterialIcons');
 var NewsArchive = require('./src/component/NewsArchive.js');
+var api_endpoint = 'https://2015.kansai.wordcamp.org/';
 
 class Test extends React.Component {
 	constructor( props ) {
@@ -41,6 +42,17 @@ class Row extends React.Component {
 		}
 	}
 
+	_get_api_base() {
+		return api_endpoint + 'wp-json/';
+	}
+
+	_get_api_path() {
+		var endpoint = this._get_api_base();
+		if ( 'news' == this.props.type ) {
+			return endpoint + 'posts';
+		}
+	}
+
 	_get_title() {
 		var title = 'WordCamp Kansai 2015';
 		return title;
@@ -54,7 +66,7 @@ class Row extends React.Component {
 					component: this._get_component(),
 					title: this._get_title(),
 					passProps: {
-						apiPath: this.props.apiPath
+						apiPath: this._get_api_path()
 					}
 			}}/>
 		)

@@ -21,38 +21,6 @@ class NewsArchive extends React.Component {
 			isLoaded: false
 		};
 	}
-	parseStartDate( postData ) {
-		for( var j = 0; j < postData.length; j++){
-			var post_meta = postData[j].post_meta;
-			for (var i = 0; i < post_meta.length; i++) {
-				if(post_meta[i].key === "Start Date (YYYY-mm-dd)"){
-					postData[j]['startDate'] = post_meta[i].value;
-				}
-			}
-		}
-		return postData;
-	}
-	sortByStartDate(postData) {
-		var postData = this.parseStartDate(postData);
-		var key = "startDate";
-
-		//ASC
-		var num_a = 1;
-		var num_b = -1;
-
-		//DESC
-		num_a = -1;
-		num_b = 1;
-
-		var data = postData.sort(function(a, b){
-			var x = a[key];
-			var y = b[key];
-			if (x > y) return num_a;
-			if (x < y) return num_b;
-			return 0;
-		});
-		return data;
-	}
 
 	renderLoadingView() {
 		return (
@@ -91,14 +59,11 @@ class NewsArchive extends React.Component {
 	}
 
 	fetchCentralApi() {
-		var api = "https://central.wordcamp.org/wp-json/posts?type=wordcamp&filter[posts_per_page]=30";
-		fetch( api )
+		fetch( this.props.apiPath )
 			.then( ( response ) => response.json())
 			.then( ( responseData ) => {
-				var data = this.sortByStartDate( responseData );
-				var data = responseData;
 				this.setState({
-					NewsArchive: this.state.NewsArchive.cloneWithRows( data ),
+					NewsArchive: this.state.NewsArchive.cloneWithRows( responseData ),
 					isLoaded: true,
 				});
 			})
