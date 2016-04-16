@@ -10,6 +10,7 @@ import {
 	Toolbar as MaterialToolbar,
 	Card
 } from 'react-native-material-design';
+var NewsExcerpt = require('./NewsExcerpt.js');
 
 class NewsArchive extends React.Component {
 	constructor(props) {

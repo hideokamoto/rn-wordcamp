@@ -12,7 +12,7 @@ import {
 } from 'react-native-material-design';
 
 var Icon = require('react-native-vector-icons/MaterialIcons');
-var NewsArchive = require('./src/component/NewsArchive.js');
+var NewsArchive = require('./src/component/news/NewsArchive.js');
 var api_endpoint = 'https://2015.kansai.wordcamp.org/';
 
 class Test extends React.Component {
