@@ -13,6 +13,16 @@ class SessionExcerpt extends React.Component {
 	}
 
 	_get_category( item ) {
+		var track = '';
+		if ( item.terms.wcb_track ) {
+			Object.keys( item.terms.wcb_track ).forEach( ( key ) => {
+				track += item.terms.wcb_track[key].name;
+			}, item.terms.wcb_track );
+		}
+		return track;
+	}
+
+	_get_track( item ) {
 		var category = '';
 		if ( item.terms.category ) {
 			Object.keys( item.terms.category ).forEach( ( key ) => {
@@ -33,12 +43,14 @@ class SessionExcerpt extends React.Component {
 	render() {
 		var item = this.props.item;
 		var category = this._get_category( item );
+		var track = this._get_track( item );
 		return (
 			<Card>
 				<Card.Body>
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
 				<Text style={styles.instructions}>{category}</Text>
+				<Text style={styles.instructions}>{track}</Text>
 			</Card>
 		)
 	}
