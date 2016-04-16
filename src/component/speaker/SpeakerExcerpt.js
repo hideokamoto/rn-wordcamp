@@ -7,7 +7,7 @@ import {
 	Card
 } from 'react-native-material-design';
 
-class SessionExcerpt extends React.Component {
+class SpeakerExcerpt extends React.Component {
 	constructor( props ) {
 		super( props );
 	}
@@ -22,16 +22,6 @@ class SessionExcerpt extends React.Component {
 		return track;
 	}
 
-	_get_track( item ) {
-		var category = '';
-		if ( item.terms.category ) {
-			Object.keys( item.terms.category ).forEach( ( key ) => {
-				category += item.terms.category[key].name;
-			}, item.terms.category );
-		}
-		return category;
-	}
-
 	_onPressed( item ) {
 		this.props.navigator.push({
 			title: item.title,
@@ -43,14 +33,12 @@ class SessionExcerpt extends React.Component {
 	render() {
 		var item = this.props.item;
 		var category = this._get_category( item );
-		var track = this._get_track( item );
 		return (
 			<Card>
 				<Card.Body>
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
 				<Text style={styles.instructions}>{category}</Text>
-				<Text style={styles.instructions}>{track}</Text>
 			</Card>
 		)
 	}
@@ -75,4 +63,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-module.exports = SessionExcerpt;
+module.exports = SpeakerExcerpt;

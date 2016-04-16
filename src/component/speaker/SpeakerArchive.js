@@ -10,13 +10,13 @@ import {
 	Toolbar as MaterialToolbar,
 	Card
 } from 'react-native-material-design';
-var SessionExcerpt = require('./SessionExcerpt.js');
+var SpeakerExcerpt = require('./SpeakerExcerpt.js');
 
-class SessionArchive extends React.Component {
+class SpeakerArchive extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			SessionArchive: new ListView.DataSource({
+			SpeakerArchive: new ListView.DataSource({
 				rowHasChanged: (row1, row2) => row1 !== row2,
 			}),
 			isLoaded: false
@@ -31,18 +31,18 @@ class SessionArchive extends React.Component {
 		)
 	}
 
-	renderSessionArchiveItem( item, sectionID, rowID ) {
+	renderSpeakerArchiveItem( item, sectionID, rowID ) {
 		return (
-			<SessionExcerpt item={item} />
+			<SpeakerExcerpt item={item} />
 		);
 	}
 
-	renderSessionArchiveView() {
+	renderSpeakerArchiveView() {
 		return (
 			<ScrollView style={{ marginTop: 60}}>
 				<ListView
-					dataSource={this.state.SessionArchive}
-					renderRow={this.renderSessionArchiveItem}
+					dataSource={this.state.SpeakerArchive}
+					renderRow={this.renderSpeakerArchiveItem}
 					/>
 			</ScrollView>
 		);
@@ -54,7 +54,7 @@ class SessionArchive extends React.Component {
 			.then( ( responseData ) => {
 				console.log(responseData);
 				this.setState({
-					SessionArchive: this.state.SessionArchive.cloneWithRows( responseData ),
+					SpeakerArchive: this.state.SpeakerArchive.cloneWithRows( responseData ),
 					isLoaded: true,
 				});
 			})
@@ -67,11 +67,11 @@ class SessionArchive extends React.Component {
 
 	render() {
 		if ( this.state.isLoaded ) {
-			return this.renderSessionArchiveView();
+			return this.renderSpeakerArchiveView();
 		} else {
 			return this.renderLoadingView();
 		}
 	}
 }
 
-module.exports = SessionArchive;
+module.exports = SpeakerArchive;

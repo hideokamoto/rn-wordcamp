@@ -14,6 +14,7 @@ import {
 var Icon = require('react-native-vector-icons/MaterialIcons');
 var NewsArchive = require('./src/component/news/NewsArchive.js');
 var SessionArchive = require('./src/component/session/SessionArchive.js');
+var SpeakerArchive = require('./src/component/speaker/SpeakerArchive.js');
 var api_endpoint = 'https://2015.us.wordcamp.org/';
 
 class Test extends React.Component {
@@ -40,6 +41,8 @@ class Row extends React.Component {
 			return NewsArchive;
 		} else if ( 'session' == this.props.type ) {
 			return SessionArchive;
+		} else if ( 'speaker' == this.props.type ) {
+			return SpeakerArchive;
 		} else {
 			return Test;
 		}
@@ -55,6 +58,8 @@ class Row extends React.Component {
 			return endpoint + 'posts';
 		} else if ( 'session' == this.props.type ) {
 			return endpoint + 'posts?type=wcb_session&filter[post_per_pages]=100';
+		} else if ( 'speaker' == this.props.type ) {
+			return endpoint + 'posts?type=wcb_speaker&filter[post_per_pages]=100';
 		}
 	}
 
