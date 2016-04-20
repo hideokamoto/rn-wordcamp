@@ -15,6 +15,7 @@ var Icon = require('react-native-vector-icons/MaterialIcons');
 var NewsArchive = require('./src/component/news/NewsArchive.js');
 var SessionArchive = require('./src/component/session/SessionArchive.js');
 var SpeakerArchive = require('./src/component/speaker/SpeakerArchive.js');
+var SponsorArchive = require('./src/component/sponsor/SponsorArchive.js');
 var api_endpoint = 'https://2015.us.wordcamp.org/';
 
 class Test extends React.Component {
@@ -43,6 +44,8 @@ class Row extends React.Component {
 			return SessionArchive;
 		} else if ( 'speaker' == this.props.type ) {
 			return SpeakerArchive;
+		} else if ( 'sponsor' == this.props.type ) {
+			return SponsorArchive;
 		} else {
 			return Test;
 		}
@@ -57,9 +60,11 @@ class Row extends React.Component {
 		if ( 'news' == this.props.type ) {
 			return endpoint + 'posts';
 		} else if ( 'session' == this.props.type ) {
-			return endpoint + 'posts?type=wcb_session&filter[post_per_pages]=100';
+			return endpoint + 'posts?type=wcb_session&filter[posts_per_page]=100';
 		} else if ( 'speaker' == this.props.type ) {
-			return endpoint + 'posts?type=wcb_speaker&filter[post_per_pages]=100';
+			return endpoint + 'posts?type=wcb_speaker&filter[posts_per_page]=100';
+		} else if ( 'sponsor' == this.props.type ) {
+			return endpoint + 'posts?type=wcb_sponsor&filter[posts_per_page]=100';
 		}
 	}
 
