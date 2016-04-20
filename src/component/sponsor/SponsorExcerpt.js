@@ -6,13 +6,14 @@ import React, {
 import {
 	Card
 } from 'react-native-material-design';
+var HTMLWebView = require('react-native-htmlview');
 
 class SponsorExcerpt extends React.Component {
 	constructor( props ) {
 		super( props );
 	}
 
-	_get_category( item ) {
+	_get_level( item ) {
 		var track = '';
 		if ( item.terms.wcb_sponsor_level ) {
 			Object.keys( item.terms.wcb_sponsor_level ).forEach( ( key ) => {
@@ -42,15 +43,17 @@ class SponsorExcerpt extends React.Component {
 
 	render() {
 		var item = this.props.item;
-		var category = this._get_category( item );
-		var track = this._get_track( item );
+		var level = this._get_level( item );
 		return (
 			<Card>
 				<Card.Body>
 					<Text style={styles.title}>{item.title}</Text>
+					<Text style={styles.instructions}>{level}</Text>
 				</Card.Body>
-				<Text style={styles.instructions}>{category}</Text>
-				<Text style={styles.instructions}>{track}</Text>
+				<HTMLWebView
+					value={item.excerpt}
+					onLinkPress={(url) => console.log('clicked link: ', url)}
+				/>
 			</Card>
 		)
 	}
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
 		margin: 10,
 	},
 	instructions: {
-		textAlign: 'center',
+		textAlign: 'left',
 		color: '#333333',
 		marginBottom: 5,
 	},
