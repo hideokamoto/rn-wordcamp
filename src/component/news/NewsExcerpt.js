@@ -7,6 +7,7 @@ import {
 	Card
 } from 'react-native-material-design';
 var NewsContent = require('./NewsContent.js');
+var HTMLWebView = require('react-native-htmlview');
 
 
 class NewsExcerpt extends React.Component {
@@ -41,6 +42,10 @@ class NewsExcerpt extends React.Component {
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
 				<Text style={styles.instructions}>{category}</Text>
+				<HTMLWebView
+					value={item.excerpt}
+					onLinkPress={(url) => console.log('clicked link: ', url)}
+				/>
 			</Card>
 		)
 	}

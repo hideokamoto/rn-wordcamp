@@ -6,6 +6,7 @@ import React, {
 import {
 	Card
 } from 'react-native-material-design';
+var HTMLWebView = require('react-native-htmlview');
 
 class SessionExcerpt extends React.Component {
 	constructor( props ) {
@@ -51,6 +52,10 @@ class SessionExcerpt extends React.Component {
 				</Card.Body>
 				<Text style={styles.instructions}>{category}</Text>
 				<Text style={styles.instructions}>{track}</Text>
+				<HTMLWebView
+					value={item.excerpt}
+					onLinkPress={(url) => console.log('clicked link: ', url)}
+				/>
 			</Card>
 		)
 	}

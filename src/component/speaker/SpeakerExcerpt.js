@@ -6,6 +6,7 @@ import React, {
 import {
 	Card
 } from 'react-native-material-design';
+var HTMLWebView = require('react-native-htmlview');
 
 class SpeakerExcerpt extends React.Component {
 	constructor( props ) {
@@ -38,7 +39,10 @@ class SpeakerExcerpt extends React.Component {
 				<Card.Body>
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
-				<Text style={styles.instructions}>{category}</Text>
+				<HTMLWebView
+					value={item.excerpt}
+					onLinkPress={(url) => console.log('clicked link: ', url)}
+				/>
 			</Card>
 		)
 	}
