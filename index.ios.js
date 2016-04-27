@@ -16,6 +16,7 @@ var NewsArchive = require('./src/component/news/NewsArchive.js');
 var SessionArchive = require('./src/component/session/SessionArchive.js');
 var SpeakerArchive = require('./src/component/speaker/SpeakerArchive.js');
 var SponsorArchive = require('./src/component/sponsor/SponsorArchive.js');
+var Access = require('./src/component/access/Access.js');
 var api_endpoint = 'https://2015.us.wordcamp.org/';
 
 class Test extends React.Component {
@@ -46,6 +47,8 @@ class Row extends React.Component {
 			return SpeakerArchive;
 		} else if ( 'sponsor' == this.props.type ) {
 			return SponsorArchive;
+		} else if ( 'access' == this.props.type ) {
+			return Access;
 		} else {
 			return Test;
 		}
@@ -148,6 +151,18 @@ class WckApp extends React.Component {
 					}}
 				>
 					<Row type='sponsor'/>
+				</Icon.TabBarItem>
+				<Icon.TabBarItem
+					title="Access"
+					iconName='map'
+					selected={ this.state.selectedTab === 'access' }
+					onPress={() => {
+						this.setState({
+							selectedTab: 'access',
+						})
+					}}
+				>
+					<Row type='access'/>
 				</Icon.TabBarItem>
 			</TabBarIOS>
 		)
