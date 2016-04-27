@@ -52,7 +52,6 @@ class SponsorArchive extends React.Component {
 		fetch( this.props.apiPath )
 			.then( ( response ) => response.json())
 			.then( ( responseData ) => {
-				console.log(responseData);
 				this.setState({
 					SponsorArchive: this.state.SponsorArchive.cloneWithRows( responseData ),
 					isLoaded: true,

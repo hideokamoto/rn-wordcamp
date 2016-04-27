@@ -45,11 +45,14 @@ class SessionExcerpt extends React.Component {
 		var item = this.props.item;
 		var category = this._get_category( item );
 		var track = this._get_track( item );
+		var time = Number( this.props.item._wcpt_session_time + '000' );
+		time = new Date(time).toLocaleString();
 		return (
 			<Card>
 				<Card.Body>
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
+				<Text style={styles.instructions}>{time}</Text>
 				<Text style={styles.instructions}>{category}</Text>
 				<Text style={styles.instructions}>{track}</Text>
 				<HTMLWebView

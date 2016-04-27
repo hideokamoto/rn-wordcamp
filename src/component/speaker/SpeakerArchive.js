@@ -52,7 +52,6 @@ class SpeakerArchive extends React.Component {
 		fetch( this.props.apiPath )
 			.then( ( response ) => response.json())
 			.then( ( responseData ) => {
-				console.log(responseData);
 				this.setState({
 					SpeakerArchive: this.state.SpeakerArchive.cloneWithRows( responseData ),
 					isLoaded: true,
