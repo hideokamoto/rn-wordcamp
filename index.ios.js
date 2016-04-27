@@ -17,7 +17,7 @@ var SessionArchive = require('./src/component/session/SessionArchive.js');
 var SpeakerArchive = require('./src/component/speaker/SpeakerArchive.js');
 var SponsorArchive = require('./src/component/sponsor/SponsorArchive.js');
 var Access = require('./src/component/access/Access.js');
-var api_endpoint = 'https://2015.us.wordcamp.org/';
+var api_endpoint = 'https://2015.kansai.wordcamp.org/';
 
 class Test extends React.Component {
 	constructor( props ) {

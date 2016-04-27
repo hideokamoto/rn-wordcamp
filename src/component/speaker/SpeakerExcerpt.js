@@ -40,7 +40,7 @@ class SpeakerExcerpt extends React.Component {
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
 				<HTMLWebView
-					value={item.excerpt}
+					value={item.content}
 					onLinkPress={(url) => console.log('clicked link: ', url)}
 				/>
 			</Card>

@@ -51,7 +51,7 @@ class SponsorExcerpt extends React.Component {
 					<Text style={styles.instructions}>{level}</Text>
 				</Card.Body>
 				<HTMLWebView
-					value={item.excerpt}
+					value={item.content}
 					onLinkPress={(url) => console.log('clicked link: ', url)}
 				/>
 			</Card>

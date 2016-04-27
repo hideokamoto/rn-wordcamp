@@ -44,7 +44,7 @@ class SessionExcerpt extends React.Component {
 				<Text style={styles.instructions}>{time}</Text>
 				{track}
 				<HTMLWebView
-					value={item.excerpt}
+					value={item.content}
 					onLinkPress={(url) => console.log('clicked link: ', url)}
 				/>
 			</Card>

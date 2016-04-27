@@ -43,7 +43,7 @@ class NewsExcerpt extends React.Component {
 				</Card.Body>
 				<Text style={styles.instructions}>{category}</Text>
 				<HTMLWebView
-					value={item.excerpt}
+					value={item.content}
 					onLinkPress={(url) => console.log('clicked link: ', url)}
 				/>
 			</Card>
