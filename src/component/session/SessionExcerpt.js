@@ -13,24 +13,14 @@ class SessionExcerpt extends React.Component {
 		super( props );
 	}
 
-	_get_category( item ) {
-		var track = '';
+	_get_track( item ) {
+		var tracks = [];
 		if ( item.terms.wcb_track ) {
 			Object.keys( item.terms.wcb_track ).forEach( ( key ) => {
-				track += item.terms.wcb_track[key].name;
+				tracks[key] = <Text key={key} style={styles.instructions}>{item.terms.wcb_track[key].name}</Text>;
 			}, item.terms.wcb_track );
 		}
-		return track;
-	}
-
-	_get_track( item ) {
-		var category = '';
-		if ( item.terms.category ) {
-			Object.keys( item.terms.category ).forEach( ( key ) => {
-				category += item.terms.category[key].name;
-			}, item.terms.category );
-		}
-		return category;
+		return tracks;
 	}
 
 	_onPressed( item ) {
@@ -43,7 +33,6 @@ class SessionExcerpt extends React.Component {
 
 	render() {
 		var item = this.props.item;
-		var category = this._get_category( item );
 		var track = this._get_track( item );
 		var time = Number( this.props.item._wcpt_session_time + '000' );
 		time = new Date(time).toLocaleString();
@@ -53,8 +42,7 @@ class SessionExcerpt extends React.Component {
 					<Text style={styles.title}>{item.title}</Text>
 				</Card.Body>
 				<Text style={styles.instructions}>{time}</Text>
-				<Text style={styles.instructions}>{category}</Text>
-				<Text style={styles.instructions}>{track}</Text>
+				{track}
 				<HTMLWebView
 					value={item.excerpt}
 					onLinkPress={(url) => console.log('clicked link: ', url)}
